@@ -3,6 +3,8 @@ import React, { useCallback } from 'react';
 import { StackActions, useNavigation } from '@react-navigation/native';
 
 export default function Home() {
+  console.log('[SCREEN] Home');
+
   const navigation = useNavigation();
 
   const handlePress = useCallback(
