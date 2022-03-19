@@ -1,4 +1,5 @@
 import Home from '../screen/Home';
+import NestedStack from '../screen/NestedStack';
 import Profile from '../screen/Profile';
 import React from 'react';
 import Settings from '../screen/Settings';
@@ -19,6 +20,13 @@ export default function MainStackNavigation() {
         component={Home}
         options={{
           title: 'Awesome app',
+        }}
+      />
+      <Stack.Screen
+        name="NestedStack"
+        component={NestedStack}
+        options={{
+          title: 'NestedStack',
         }}
       />
       <Stack.Screen

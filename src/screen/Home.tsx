@@ -16,6 +16,11 @@ export default function Home() {
 
   return (
     <View style={styles.container}>
+      <Pressable
+        style={styles.buttonWrapper}
+        onPress={handlePress('NestedStack')}>
+        <Text>NestedStack</Text>
+      </Pressable>
       <Pressable style={styles.buttonWrapper} onPress={handlePress('Profile')}>
         <Text>Profile</Text>
       </Pressable>
