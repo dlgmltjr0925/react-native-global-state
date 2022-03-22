@@ -1,11 +1,14 @@
 import { Pressable, StyleSheet, Text, View } from 'react-native';
-import React, { useContext } from 'react';
 
-import { CounterContext } from '../context/CounterContext';
+import React from 'react';
 
-export default function Counter() {
-  const { count, increase, decrease } = useContext(CounterContext);
+interface CounterProps {
+  count: number;
+  increase: () => void;
+  decrease: () => void;
+}
 
+export default function Counter({ count, increase, decrease }: CounterProps) {
   return (
     <View style={styles.counterWrapper}>
       <Pressable style={styles.counterButton} onPress={decrease}>

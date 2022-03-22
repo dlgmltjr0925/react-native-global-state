@@ -1,23 +1,25 @@
 import { Pressable, StyleSheet, Text, View } from 'react-native';
-import React, { useCallback } from 'react';
-import {
-  StackActions,
-  useNavigation,
-  useNavigationState,
-} from '@react-navigation/native';
+import React, { useCallback, useContext } from 'react';
+import { StackActions, useNavigation } from '@react-navigation/native';
 
 import Counter from '../component/Counter';
+import { CounterContext } from '../context/CounterContext';
 
-export default function NestedStack() {
-  const index = useNavigationState(state => state.index);
+interface NestedStackProps {
+  index: number;
+}
+
+export default function NestedStack({ index }: NestedStackProps) {
   const screenKey = `NestedStack ${index}`;
   console.log(`[SCREEN] ${screenKey}`);
 
   const navigation = useNavigation();
 
+  const counter = useContext(CounterContext);
+
   const handlePress = useCallback(
-    () => navigation.dispatch(StackActions.push('NestedStack')),
-    [navigation],
+    () => navigation.dispatch(StackActions.push(`NestedStack${index + 1}`)),
+    [index, navigation],
   );
 
   return (
@@ -25,7 +27,7 @@ export default function NestedStack() {
       <Pressable style={styles.buttonWrapper} onPress={handlePress}>
         <Text>{`NestedStack ${index + 1}`}</Text>
       </Pressable>
-      <Counter />
+      <Counter {...counter} />
     </View>
   );
 }
