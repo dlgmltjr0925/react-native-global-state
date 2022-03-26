@@ -20,7 +20,8 @@ interface NestedStackProps {
 }
 
 const useFocusContext = (reactContext: React.Context<any>) => {
-  const context = useContext(reactContext);
+  // const context = useContext(reactContext);
+  const context = {};
   const [contextValue, setContextValue] = useState(context);
 
   useFocusEffect(() => {

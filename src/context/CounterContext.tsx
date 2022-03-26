@@ -1,4 +1,4 @@
-import { PropsWithChildren, createContext, useCallback, useState } from 'react';
+import { PropsWithChildren, createContext, useCallback, useRef } from 'react';
 
 import React from 'react';
 
@@ -19,18 +19,19 @@ export const CounterContext = createContext<CounterContextValue>({
 export function CounterProvider({
   children,
 }: PropsWithChildren<CounterProviderProps>) {
-  const [count, setCount] = useState<number>(0);
+  const countRef = useRef<number>(0);
 
   const increase = useCallback(() => {
-    setCount(count + 1);
-  }, [count]);
+    countRef.current++;
+  }, []);
 
   const decrease = useCallback(() => {
-    setCount(count - 1);
-  }, [count]);
+    countRef.current--;
+  }, []);
 
   return (
-    <CounterContext.Provider value={{ count, increase, decrease }}>
+    <CounterContext.Provider
+      value={{ count: countRef.current, increase, decrease }}>
       {children}
     </CounterContext.Provider>
   );
