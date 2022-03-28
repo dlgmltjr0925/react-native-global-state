@@ -3,6 +3,7 @@ import NestedStack from '../screen/NestedStack';
 import Profile from '../screen/Profile';
 import React from 'react';
 import Settings from '../screen/Settings';
+import TopTabs from '../screen/TopTabs';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import withIndex from '../hoc/withIndex';
 
@@ -11,7 +12,7 @@ const Stack = createNativeStackNavigator();
 export default function MainStackNavigation() {
   return (
     <Stack.Navigator
-      initialRouteName="Home"
+      initialRouteName="TopTabs"
       screenOptions={{
         headerTintColor: 'white',
         headerStyle: { backgroundColor: 'tomato' },
@@ -58,6 +59,7 @@ export default function MainStackNavigation() {
           title: 'NestedStack5',
         }}
       />
+      <Stack.Screen name="TopTabs" component={TopTabs} />
       <Stack.Screen
         name="Profile"
         component={Profile}

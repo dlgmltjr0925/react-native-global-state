@@ -21,6 +21,9 @@ export default function Home() {
         onPress={handlePress('NestedStack1')}>
         <Text>NestedStack</Text>
       </Pressable>
+      <Pressable style={styles.buttonWrapper} onPress={handlePress('TopTabs')}>
+        <Text>TopTabs</Text>
+      </Pressable>
       <Pressable style={styles.buttonWrapper} onPress={handlePress('Profile')}>
         <Text>Profile</Text>
       </Pressable>
